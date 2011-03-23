@@ -7,3 +7,6 @@
 [submodule "bundle/vimclojure"]
 	path = bundle/vimclojure
 	url = git://github.com/jondistad/vimclojure.git
+[submodule "bundle/screen"]
+	path = bundle/screen
+	url = git://github.com/ervandew/screen.git
