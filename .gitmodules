@@ -40,3 +40,9 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
+[submodule "bundle/vim-yankring"]
+	path = bundle/vim-yankring
+	url = git://github.com/chrismetcalf/vim-yankring.git
+[submodule "bundle/vim-jquery"]
+	path = bundle/vim-jquery
+	url = git://github.com/itspriddle/vim-jquery.git
