@@ -1,6 +1,3 @@
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
@@ -49,3 +46,6 @@
 [submodule "bundle/vim-scratch"]
 	path = bundle/vim-scratch
 	url = git://github.com/duff/vim-scratch.git
+[submodule "bundle/ctrlp"]
+	path = bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
