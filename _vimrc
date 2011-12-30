@@ -21,7 +21,6 @@ set autoindent
 
 set encoding=utf-8
 set scrolloff=3
-set autoindent
 set showmode
 set showcmd
 set hidden
@@ -92,7 +91,7 @@ if has("gui_running")
 endif
 
 " Save on losing focus
-au FocusLost * :wa
+"au FocusLost * :wa
 
 " Windows
 nnoremap <leader>w <C-w>v<C-w>l
@@ -117,7 +116,7 @@ vnoremap <Space> za
 " Plugins
 "
 
-" NERDTree
-nnoremap <F2> :NERDTreeToggle C:\Dev\<cr>
-let NERDTreeQuitOnOpen=1
+" CtrlP
+nnoremap <F2> :CtrlP<cr>
+set wildignore+=.git/*,.svn/*
 
