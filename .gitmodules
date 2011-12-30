@@ -43,6 +43,6 @@
 [submodule "bundle/zencoding-vim"]
 	path = bundle/zencoding-vim
 	url = git://github.com/mattn/zencoding-vim.git
-[submodule "bundle\\tcomment"]
-	path = bundle\\tcomment
+[submodule "bundle/tcomment"]
+	path = bundle/tcomment
 	url = git://github.com/tomtom/tcomment_vim.git
