@@ -3,10 +3,43 @@ language English
 set langmenu=none
 
 " Pathogen
+" filetype off
+" call pathogen#infect()
+" call pathogen#helptags()
+" filetype plugin indent on
+
+" Vundle
 filetype off
-call pathogen#infect()
-call pathogen#helptags()
+set rtp+=~/vimfiles/bundle/vundle/
+call vundle#rc()
 filetype plugin indent on
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" github bundles
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+" Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-repeat'
+ 
+" Bundle 'jondistad/vimclojure'
+" Bundle 'edsono/vim-matchit'
+" Bundle 'kana/vim-surround'
+" Bundle 'plasticboy/vim-markdown'
+ Bundle 'markabe/bufexplorer'
+" Bundle 'cakebaker/scss-syntax.vim'
+" Bundle 'chrismetcalf/vim-yankring'
+" Bundle 'itspriddle/vim-jquery'
+ Bundle 'duff/vim-scratch'
+ Bundle 'kien/ctrlp.vim'
+ Bundle 'mattn/zencoding-vim'
+ Bundle 'tomtom/tcomment_vim'
+ Bundle 'pangloss/vim-javascript'
+ Bundle 'Lokaltog/vim-powerline'
+
+Bundle 'Zenburn'
 
 
 set nocompatible
@@ -62,9 +95,6 @@ syntax on
 " Diff
 set diffopt+=vertical,iwhite
 
-" Statusline
-"set statusline=%F%m%r%h%w\ %{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [ENC=%{&fenc}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-
 " Backups
 set backupdir=~/vimfiles/tmp/backup// " backups
 set directory=~/vimfiles/tmp/swap//   " swap files
@@ -87,6 +117,9 @@ if has("gui_running")
 
     " Maximize window on startup
     au GUIEnter * simalt ~x
+else
+
+    " set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 
 endif
 
@@ -115,8 +148,20 @@ vnoremap <Space> za
 "
 " Plugins
 "
+" cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
 
 " CtrlP
-nnoremap <F2> :CtrlP<cr>
-set wildignore+=.git/*,.svn/*
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>F :CtrlPCurFile<cr>
+
+" set wildignore+=.git\*,.svn\*
+let g:ctrlp_by_filename = 1
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\.git$\|\.hg$\|\.svn$\|target$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.class$',
+    \ }
+	" \ 'link': 'some_bad_symbolic_link',
+
+nnoremap <silent> <F11> :YRShow<CR>
 
