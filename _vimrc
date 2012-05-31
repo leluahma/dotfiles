@@ -1,16 +1,8 @@
-" Menu languages
-language English
-set langmenu=none
-
-" Pathogen
-" filetype off
-" call pathogen#infect()
-" call pathogen#helptags()
-" filetype plugin indent on
+set nocompatible
 
 " Vundle
 filetype off
-set rtp+=~/vimfiles/bundle/vundle/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 filetype plugin indent on
 
@@ -32,17 +24,16 @@ Bundle 'tpope/vim-repeat'
 " Bundle 'cakebaker/scss-syntax.vim'
 " Bundle 'chrismetcalf/vim-yankring'
 " Bundle 'itspriddle/vim-jquery'
- Bundle 'duff/vim-scratch'
- Bundle 'kien/ctrlp.vim'
- Bundle 'mattn/zencoding-vim'
- Bundle 'tomtom/tcomment_vim'
- Bundle 'pangloss/vim-javascript'
- Bundle 'Lokaltog/vim-powerline'
+Bundle 'duff/vim-scratch'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mattn/zencoding-vim'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'Lokaltog/vim-powerline'
 
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'Zenburn'
 
-
-set nocompatible
 set modelines=0
 
 " Tabs & Spaces
@@ -87,7 +78,6 @@ set wrap
 set ruler
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
 
 " Syntax highlighting
 syntax on
@@ -96,12 +86,13 @@ syntax on
 set diffopt+=vertical,iwhite
 
 " Backups
-set backupdir=~/vimfiles/tmp/backup// " backups
-set directory=~/vimfiles/tmp/swap//   " swap files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files
 set backup                        " enable backups
 
 " vim 7.3 specific
 if v:version >= 703
+    set colorcolumn=85
     set undofile
     set undodir=~/vimfiles/tmp/undo// " undo files
     set relativenumber
@@ -111,6 +102,10 @@ endif
 
 if has("gui_running")
     
+    " Menu languages
+    language English
+    set langmenu=none
+
     " Set gui font as Consolas 10pt
     set guifont=Consolas:h10
     colors zenburn
