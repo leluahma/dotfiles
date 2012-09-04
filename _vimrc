@@ -100,21 +100,24 @@ else
     set number
 endif
 
+colors solarized
+
 if has("gui_running")
     
     " Menu languages
-    language English
-    set langmenu=none
+    " language English
+    " set langmenu=none
 
     " Set gui font as Consolas 10pt
-    set guifont=Consolas:h10
-    colors zenburn
+    "set guifont=Consolas:h10
+    set background=light
 
     " Maximize window on startup
     au GUIEnter * simalt ~x
 else
 
-    " set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+    set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+    set background=dark
 
 endif
 
