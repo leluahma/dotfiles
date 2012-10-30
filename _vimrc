@@ -31,7 +31,9 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'Zenburn'
+" Bundle 'Zenburn'
+
+filetype plugin indent on
 
 filetype plugin indent on
 
@@ -103,25 +105,9 @@ endif
 
 colors solarized
 
-if has("gui_running")
-    
-    " Menu languages
-    language English
-    set langmenu=none
-
-    " Set gui font as Consolas 10pt
-    set guifont=Consolas:h10
-    set background=light
-
-    " Maximize window on startup
-    au GUIEnter * simalt ~x
-else
-
-    " set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
-    let g:solarized_termcololrs=256
-    set background=dark
-
-endif
+set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+let g:solarized_termcolors=256
+set background=dark
 
 " Save on losing focus
 "au FocusLost * :wa
@@ -151,8 +137,8 @@ vnoremap <Space> za
 " cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
 
 " CtrlP
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>F :CtrlPCurFile<cr>
+" nnoremap <leader>f :CtrlP<cr>
+" nnoremap <leader>F :CtrlPCurFile<cr>
 
 " set wildignore+=.git\*,.svn\*
 let g:ctrlp_by_filename = 1

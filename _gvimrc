@@ -1,0 +1,17 @@
+
+if has("win32")
+    
+    " Menu languages
+    " language English
+    " set langmenu=none
+
+    " Set gui font as Consolas 10pt
+    set guifont=Consolas:h10
+
+    " Maximize window on startup
+    au GUIEnter * simalt ~x
+endif
+
+set background=light
+
+
