@@ -1,10 +1,9 @@
 set nocompatible
+filetype off
 
 " Vundle
-filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-filetype plugin indent on
 
 " let Vundle manage Vundle
 " required! 
@@ -33,6 +32,8 @@ Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Zenburn'
+
+filetype plugin indent on
 
 set modelines=0
 
@@ -94,7 +95,7 @@ set backup                        " enable backups
 if v:version >= 703
     set colorcolumn=85
     set undofile
-    set undodir=~/vimfiles/tmp/undo// " undo files
+    set undodir=~/.vim/tmp/undo// " undo files
     set relativenumber
 else
     set number
@@ -105,18 +106,19 @@ colors solarized
 if has("gui_running")
     
     " Menu languages
-    " language English
-    " set langmenu=none
+    language English
+    set langmenu=none
 
     " Set gui font as Consolas 10pt
-    "set guifont=Consolas:h10
+    set guifont=Consolas:h10
     set background=light
 
     " Maximize window on startup
     au GUIEnter * simalt ~x
 else
 
-    set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+    " set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+    let g:solarized_termcololrs=256
     set background=dark
 
 endif
