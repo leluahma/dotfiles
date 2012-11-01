@@ -1,3 +1,5 @@
 
 .VimballRecord
 tmp/
+bundle/
+
