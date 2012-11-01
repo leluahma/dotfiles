@@ -1,1 +1,5 @@
-*   text=auto
+_gitconfig      text
+_vimrc          text
+_pentadactylrc  text
+*.ahk           text
+
