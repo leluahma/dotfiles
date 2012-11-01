@@ -30,11 +30,11 @@ else
 return
 
 ; Foobar2000 controls
-#left::Run C:\Program Files\foobar2000\foobar2000.exe /prev
-#right::Run C:\Program Files\foobar2000\foobar2000.exe /next
+#left::Run C:\Program Files (x86)\foobar2000\foobar2000.exe /prev
+#right::Run C:\Program Files (x86)\foobar2000\foobar2000.exe /next
 
-#up::Run C:\Program Files\foobar2000\foobar2000.exe /command:Up
-#down::Run C:\Program Files\foobar2000\foobar2000.exe /command:Down
+#up::Run C:\Program Files (x86)\foobar2000\foobar2000.exe /command:Up
+#down::Run C:\Program Files (x86)\foobar2000\foobar2000.exe /command:Down
 
 ; Note: From now on whenever you run AutoHotkey directly, this script
 ; will be loaded.  So feel free to customize it to suit your needs.
