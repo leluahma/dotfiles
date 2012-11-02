@@ -1,6 +1,5 @@
 [user]
 	name = Markus Latvala
-	email = markus@bitwise.fi
 [alias]
     # pretty ascii graph log format
     l = log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset\
@@ -14,3 +13,5 @@
     # really useful for high level picture
     ld = !git l --all --simplify-by-decoration 
 
+[color]
+	ui = true

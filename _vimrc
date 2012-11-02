@@ -143,9 +143,10 @@ vnoremap <Space> za
 " set wildignore+=.git\*,.svn\*
 let g:ctrlp_by_filename = 1
 let g:ctrlp_dotfiles = 0
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|\.hg$\|\.svn$\|target$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.class$',
+	\ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
+    \ 'file': '\v\.(exe|so|dll|class)$',
     \ }
 	" \ 'link': 'some_bad_symbolic_link',
 
