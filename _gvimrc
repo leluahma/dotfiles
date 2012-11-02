@@ -1,9 +1,7 @@
 
 if has("win32")
-    
     " Menu languages
-    " language English
-    " set langmenu=none
+    set langmenu=none
 
     " Set gui font as Consolas 10pt
     set guifont=Consolas:h10

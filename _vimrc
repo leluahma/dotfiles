@@ -103,11 +103,13 @@ else
     set number
 endif
 
-colors solarized
+language English
 
+" Color scheme (solarized)
+colors solarized
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 let g:solarized_termcolors=256
-set background=dark
+set background=light
 
 " Save on losing focus
 "au FocusLost * :wa
