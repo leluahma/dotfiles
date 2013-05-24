@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 
 " Vundle
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/vimfiles/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
@@ -17,7 +17,7 @@ Bundle 'tpope/vim-repeat'
  
 " Bundle 'jondistad/vimclojure'
 " Bundle 'edsono/vim-matchit'
-" Bundle 'kana/vim-surround'
+Bundle 'kana/vim-surround'
 " Bundle 'plasticboy/vim-markdown'
  Bundle 'markabe/bufexplorer'
 " Bundle 'cakebaker/scss-syntax.vim'
@@ -60,7 +60,7 @@ set backspace=indent,eol,start
 set laststatus=2
 
 " Leader character
-let mapleader = ","
+" let mapleader = ","
 
 " Searching
 nnoremap / /\v

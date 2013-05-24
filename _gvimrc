@@ -7,7 +7,7 @@ if has("win32")
     set guifont=Consolas:h10
 
     " Maximize window on startup
-    au GUIEnter * simalt ~x
+    " au GUIEnter * simalt ~x
 endif
 
 set background=light

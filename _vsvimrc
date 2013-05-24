@@ -1,0 +1,69 @@
+" Tabs & Spaces
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set autoindent
+
+set scrolloff=3
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set ttyfast
+set backspace=indent,eol,start
+set laststatus=2
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+
+" Long line handling
+set wrap
+set ruler
+set textwidth=79
+set formatoptions=qrn1
+
+" Syntax highlighting
+syntax on
+
+set relativenumber
+
+language English
+
+" Color scheme (solarized)
+" colors solarized
+" set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+" let g:solarized_termcolors=256
+" set background=light
+
+" Windows
+nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader>wm <C-w>_<C-w>|
+
+" Movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap j gj
+nnoremap k gk
+
+" Folding
+set foldlevelstart=0
+nnoremap <Space> za
+vnoremap <Space> za
+"noremap <leader>ft Vatzf
