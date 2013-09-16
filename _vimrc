@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 
 " Vundle
-set rtp+=~/vimfiles/bundle/vundle/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
@@ -32,8 +32,6 @@ Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'altercation/vim-colors-solarized'
 " Bundle 'Zenburn'
-
-filetype plugin indent on
 
 filetype plugin indent on
 
@@ -103,13 +101,11 @@ else
     set number
 endif
 
-language English
-
 " Color scheme (solarized)
 colors solarized
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 let g:solarized_termcolors=256
-set background=light
+set background=dark
 
 " Save on losing focus
 "au FocusLost * :wa
