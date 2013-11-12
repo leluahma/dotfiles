@@ -74,7 +74,7 @@
 
     # diff = !git diff --word-diff
     d = diff --word-diff
-    dc = diff --cached
+    dc = !git d --cached
     
     # reset commands
     unstage = reset
@@ -89,6 +89,7 @@
     sl = stash list
     sa = stash apply
     ss = stash save
+    sp = stash pop
 
     cp = cherry-pick
     grep = grep -Ii
@@ -152,4 +153,6 @@
     # show just commits currently decorated by branch/tag pointers 
     # really useful for high level picture
     ld = !git l --all --simplify-by-decoration 
+
+    findadded = log --diff-filter=A
 
