@@ -1,8 +1,16 @@
 set nocompatible
 filetype off
 
+let s:vimdir = "~/.vim"
+
 " Vundle
-set rtp+=~/vimfiles/bundle/vundle/
+if has("win32")
+    let s:vimdir = "~/vimfiles"
+endif
+
+let s:vundledir = s:vimdir . '/bundle/vundle/'
+let &rtp .= ',' . s:vundledir
+
 call vundle#rc()
 
 " let Vundle manage Vundle
@@ -89,18 +97,32 @@ syntax on
 set diffopt+=vertical,iwhite
 
 " Backups
-set backupdir=~/.vim/tmp/backup// " backups
-set directory=~/.vim/tmp/swap//   " swap files
-set backup                        " enable backups
+set backup
+let backupdir = s:vimdir . "/tmp/backup/"
+let directory = s:vimdir . "/tmp/swap/" 
+
+if !has("gui_running")
+    set term=xterm
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+endif
+
+
+if exists('+relativenumber')
+    set relativenumber
+else
+    set number
+endif
+
+if has('persistent_undo')
+    set undofile
+    let undodir = s:vimdir . "/tmp/undo/"
+endif
 
 " vim 7.3 specific
 if v:version >= 703
     set colorcolumn=85
-    set undofile
-    set undodir=~/.vim/tmp/undo// " undo files
-    set relativenumber
-else
-    set number
 endif
 
 language English
