@@ -8,6 +8,7 @@ if has("win32")
 
     " Maximize window on startup
     " au GUIEnter * simalt ~x
+    language English
 endif
 
 set background=light

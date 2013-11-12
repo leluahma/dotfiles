@@ -43,8 +43,6 @@ Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 
-filetype plugin indent on
-
 set modelines=0
 
 " Tabs & Spaces
@@ -53,6 +51,9 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
+set smarttab
+set shiftround
+set nojoinspaces
 
 set encoding=utf-8
 set scrolloff=3
@@ -61,11 +62,13 @@ set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest
-set visualbell
 set cursorline
 set ttyfast
 set backspace=indent,eol,start
 set laststatus=2
+
+" Visual bell
+set vb t_vb=
 
 " Leader character
 " let mapleader = ","
@@ -125,13 +128,11 @@ if v:version >= 703
     set colorcolumn=85
 endif
 
-language English
-
 " Color scheme (solarized)
 colors solarized
 set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
 let g:solarized_termcolors=256
-set background=light
+set background=dark
 
 " Save on losing focus
 "au FocusLost * :wa
