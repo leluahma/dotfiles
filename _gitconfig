@@ -29,7 +29,7 @@
 
 # push/pull/diff options
 [push]
-    default = upstream
+    default = simple
 [pull]
     default = current
 [diff]
