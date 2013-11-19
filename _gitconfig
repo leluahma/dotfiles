@@ -1,9 +1,6 @@
 [user]
 	name = Markus Latvala
 
-[color]
-	ui = true
-
 [color "branch"]
     current = red reverse
     local = cyan
@@ -23,6 +20,10 @@
 [advice]
     pushNonFastForward = false
     statusHints = false
+
+#[status]
+#    branch = true
+#    short = true
 
 [core]
     whitespace = trailing-space,space-before-tab
@@ -48,8 +49,7 @@
 # aliases
 [alias]
     # status = status -sb
-    st = status -sb
-    s = !git st
+    s = status
 
     cl = clone
 
@@ -57,10 +57,11 @@
     cm = commit -m
     cma = commit -a -m
     ca = commit --amend
-    amend = commit --amend
     caa = commit -a --amend -C HEAD
-    filelog = log -u
-    fl = log -u
+    amend = commit --amend
+
+    filelog = log --patch
+    fl = log --patch
 
     ai = add --interactive
 

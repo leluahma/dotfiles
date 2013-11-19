@@ -1,17 +1,20 @@
 set nocompatible
 filetype off
 
-let s:vimdir = "~/.vim"
-
-" Vundle
-if has("win32")
-    let s:vimdir = "~/vimfiles"
+if has('win32') || has('win32unix') "windows/cygwin
+    let s:separator = '_'
+else
+    let s:separator = '.'
 endif
 
-let s:vundledir = s:vimdir . '/bundle/vundle/'
+let s:parent = '~/' . s:separator . 'vim/'
+
+" Vundle
+let s:bundledir = s:parent . '/bundle/'
+let s:vundledir = s:bundledir . '/vundle/'
 let &rtp .= ',' . s:vundledir
 
-call vundle#rc()
+call vundle#rc(s:bundledir)
 
 " let Vundle manage Vundle
 " required! 
@@ -101,8 +104,8 @@ set diffopt+=vertical,iwhite
 
 " Backups
 set backup
-let backupdir = s:vimdir . "/tmp/backup/"
-let directory = s:vimdir . "/tmp/swap/" 
+execute 'set backupdir=' . escape(s:parent, ' ') . '/tmp/backup/,.'
+execute 'set directory=' . escape(s:parent, ' ') . '/tmp/swap/,.'
 
 if !has("gui_running")
     set term=xterm
@@ -120,7 +123,7 @@ endif
 
 if has('persistent_undo')
     set undofile
-    let undodir = s:vimdir . "/tmp/undo/"
+    execute 'set undodir=' . escape(s:parent, ' ') . '/tmp/undo/,.'
 endif
 
 " vim 7.3 specific
