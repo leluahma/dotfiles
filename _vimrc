@@ -3,6 +3,7 @@ filetype off
 
 if has('win32') || has('win32unix') "windows/cygwin
     let s:separator = '_'
+    set noshellslash
 else
     let s:separator = '.'
 endif
@@ -98,6 +99,7 @@ set formatoptions=qrn1
 
 " Syntax highlighting
 syntax on
+set synmaxcol=120
 
 " Diff
 set diffopt+=vertical,iwhite
@@ -159,6 +161,8 @@ nnoremap <Space> za
 vnoremap <Space> za
 "noremap <leader>ft Vatzf
 
+nnoremap <leader>p :pu<cr>
+
 "
 " Plugins
 "
@@ -170,13 +174,12 @@ vnoremap <Space> za
 
 " set wildignore+=.git\*,.svn\*
 let g:ctrlp_by_filename = 1
-let g:ctrlp_dotfiles = 0
+let g:ctrlp_show_hidden = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
-    \ 'file': '\v\.(exe|so|dll|class)$',
+	\ 'dir':  '\v\.(git|hg|svn|target)$',
+    \ 'file': '\v\.(exe|so|dll|class|orig)$',
     \ }
-	" \ 'link': 'some_bad_symbolic_link',
 
 nnoremap <silent> <F11> :YRShow<CR>
 

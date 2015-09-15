@@ -1,21 +1,21 @@
 [user]
-	name = Markus Latvala
+    name = Markus Latvala
 
-[color "branch"]
-    current = red reverse
-    local = cyan
-    remote = green
+#[color "branch"]
+    #current = red reverse
+    #local = cyan
+    #remote = green
 
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+#[color "diff"]
+    #meta = yellow bold
+    #frag = magenta bold
+    #old = red bold
+    #new = green bold
 
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+#[color "status"]
+    #added = yellow
+    #changed = green
+    #untracked = cyan
 
 [advice]
     pushNonFastForward = false
@@ -49,7 +49,7 @@
 # aliases
 [alias]
     # status = status -sb
-    s = status
+    s = status -sbu
 
     cl = clone
 
@@ -64,8 +64,10 @@
     fl = log --patch
 
     ai = add --interactive
+    addall = add -A :/
 
     co = checkout
+    cob = checkout -b
     br = branch
     # "!git branch -ra | grep -v done"
     bra = branch -ra
@@ -113,7 +115,7 @@
     assume = update-index --assume-unchanged
     unassume = update-index --no-assume-unchanged
     # show assumed files
-    assumed = "!git ls-files -v | grep -i ^h | cut -c 3-"
+    assumed = !git ls-files -v | grep "^[[:lower:]]" | cut -c 3-
     # unassume all the assumed files
     unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
     assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
@@ -129,6 +131,9 @@
     # merges
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+    # update remotes
+    up = "!f() { git remote update -p && git merge --ff-only '@{u}'; }; f"
 
     # list remotes
     remotes ="!git config -l | grep remote.*url | tail -n +2"
@@ -156,4 +161,5 @@
     ld = !git l --all --simplify-by-decoration 
 
     findadded = log --diff-filter=A
+    findremoved = log --diff-filter=D
 
