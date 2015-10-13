@@ -37,7 +37,7 @@ Bundle 'kana/vim-surround'
 " Bundle 'itspriddle/vim-jquery'
 Bundle 'duff/vim-scratch'
 Bundle 'kien/ctrlp.vim'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'Lokaltog/vim-powerline'
@@ -109,14 +109,6 @@ set backup
 execute 'set backupdir=' . escape(s:parent, ' ') . '/tmp/backup/,.'
 execute 'set directory=' . escape(s:parent, ' ') . '/tmp/swap/,.'
 
-if !has("gui_running")
-    set term=xterm
-    set t_Co=256
-    let &t_AB="\e[48;5;%dm"
-    let &t_AF="\e[38;5;%dm"
-endif
-
-
 if exists('+relativenumber')
     set relativenumber
 else
@@ -133,10 +125,17 @@ if v:version >= 703
     set colorcolumn=85
 endif
 
+if $term == 'xterm'
+    set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+    let g:solarized_termcolors=256
+else
+    set t_Co=16 " Explicitly tell vim that the terminal has 16 colors
+    let g:solarized_termcolors=16
+    let g:solarized_underline=0
+endif
+
 " Color scheme (solarized)
 colors solarized
-set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
-let g:solarized_termcolors=256
 set background=dark
 
 " Save on losing focus

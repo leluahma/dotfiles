@@ -4,7 +4,7 @@ if has("win32")
     set langmenu=none
 
     " Set gui font as Consolas 10pt
-    set guifont=Consolas:h10
+    set guifont=Consolas:h12
 
     " Maximize window on startup
     " au GUIEnter * simalt ~x
