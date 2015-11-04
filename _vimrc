@@ -125,21 +125,9 @@ if v:version >= 703
     set colorcolumn=85
 endif
 
-if $term == 'xterm'
-    set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
-    let g:solarized_termcolors=256
-else
-    set t_Co=16 " Explicitly tell vim that the terminal has 16 colors
-    let g:solarized_termcolors=16
-    let g:solarized_underline=0
-endif
-
 " Color scheme (solarized)
-colors solarized
 set background=dark
-
-" Save on losing focus
-"au FocusLost * :wa
+colors solarized
 
 " Windows
 nnoremap <leader>w <C-w>v<C-w>l
@@ -179,6 +167,4 @@ let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v\.(git|hg|svn|target)$',
     \ 'file': '\v\.(exe|so|dll|class|orig)$',
     \ }
-
-nnoremap <silent> <F11> :YRShow<CR>
 
