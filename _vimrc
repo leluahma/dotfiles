@@ -6,39 +6,41 @@ let isRestricted = (v:errmsg =~# '^E145:')
 
 " Vundle support				{{{
 " http://github.com/gmarik/vundle
-" Setup: git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" vim :BundleInstall
+" Setup: git clone http://github.com/VundleVim/Vundle.vim ~/.vim/bundle/
+" vim :PluginInstall
 
-if filereadable(expand("~/.vim/bundle/vundle/autoload/vundle.vim"))
+if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
     set nocompatible
     filetype off
     
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+    set rtp+=~/.vim/bundle/Vundle.vim/
+    call vundle#begin()
     " List of bundles {{{
     " github repositories
-    Bundle 'gmarik/vundle'
-    Bundle "nathanaelkane/vim-indent-guides"
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'tpope/vim-repeat'
-    Bundle 'stephpy/vim-yaml'
-    Bundle 'chase/vim-ansible-yaml'
-    Bundle 'mattn/webapi-vim'
-    Bundle 'mattn/gist-vim'
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-repeat'
+    Plugin 'stephpy/vim-yaml'
+    Plugin 'chase/vim-ansible-yaml'
+    Plugin 'mattn/webapi-vim'
+    Plugin 'mattn/gist-vim'
 
-    Bundle 'kana/vim-surround'
-    Bundle 'markabe/bufexplorer'
-    Bundle 'duff/vim-scratch'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'mattn/emmet-vim'
-    Bundle 'tomtom/tcomment_vim'
-    Bundle 'pangloss/vim-javascript'
-    Bundle 'Lokaltog/vim-powerline'
+    Plugin 'kana/vim-surround'
+    Plugin 'markabe/bufexplorer'
+    Plugin 'duff/vim-scratch'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'mattn/emmet-vim'
+    Plugin 'tomtom/tcomment_vim'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'Lokaltog/vim-powerline'
 
-    Bundle 'altercation/vim-colors-solarized'
+    Plugin 'altercation/vim-colors-solarized'
 
     " github.com/vim-scripts repositories
-    Bundle "nginx.vim"
+    Plugin 'nginx.vim'
+
+    call vundle#end()
 
     " }}}
 endif " }}}
@@ -82,9 +84,6 @@ set wrap
 set ruler
 set textwidth=0
 set formatoptions=qrn1
-
-
-
 
 if isRestricted
     set showmode
