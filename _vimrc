@@ -191,6 +191,7 @@ noremap <Leader>p :set paste<CR>"*p<Esc>:set nopaste<CR>
 " Plugins
 "
 " cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 " CtrlP
 " nnoremap <leader>f :CtrlP<cr>
