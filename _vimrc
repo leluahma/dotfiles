@@ -7,7 +7,7 @@ let isRestricted = (v:errmsg =~# '^E145:')
 " Vundle support				{{{
 " http://github.com/gmarik/vundle
 " Setup: git clone http://github.com/VundleVim/Vundle.vim ~/.vim/bundle/
-" vim :PluginInstall
+" vim +PluginInstall +qall
 
 if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
     set nocompatible
@@ -19,6 +19,7 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
     " github repositories
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'nathanaelkane/vim-indent-guides'
+    "Plugin 'Raimondi/YAIFA'
     Plugin 'tpope/vim-fugitive'
     Plugin 'tpope/vim-repeat'
     Plugin 'stephpy/vim-yaml'
@@ -27,10 +28,11 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
     Plugin 'mattn/gist-vim'
 
     Plugin 'kana/vim-surround'
-    Plugin 'markabe/bufexplorer'
+    Plugin 'jlanzarotta/bufexplorer'
     Plugin 'duff/vim-scratch'
     Plugin 'kien/ctrlp.vim'
     Plugin 'mattn/emmet-vim'
+    Plugin 'plasticboy/vim-markdown'
     Plugin 'tomtom/tcomment_vim'
     Plugin 'pangloss/vim-javascript'
     Plugin 'Lokaltog/vim-powerline'
@@ -113,7 +115,6 @@ endif
 " Diff
 set diffopt+=vertical,iwhite
 
-
 if exists('+relativenumber')
     set relativenumber
 else
@@ -137,6 +138,20 @@ endif
 " Color scheme (solarized)
 silent! colorscheme solarized
 set background=dark
+
+if has("gui_running")
+    " Menu languages
+    set langmenu=none
+
+    " Set gui font as Consolas 10pt
+    set guifont=Consolas:h12
+
+    " Maximize window on startup
+    " au GUIEnter * simalt ~x
+    language English
+
+    set background=light
+endif
 
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
