@@ -1,29 +1,18 @@
-[user]
-    name = Markus Latvala
+[include]
+    path = ~/.gitconfig.local
 
-#[color "branch"]
-    #current = red reverse
-    #local = cyan
-    #remote = green
-
-#[color "diff"]
-    #meta = yellow bold
-    #frag = magenta bold
-    #old = red bold
-    #new = green bold
-
-#[color "status"]
-    #added = yellow
-    #changed = green
-    #untracked = cyan
+[color "status"]
+	header		= normal
+	added		= green
+	updated		= cyan
+	changed		= yellow
+	untracked	= red
+	nobranch	= red
+	branch		= normal bold
 
 [advice]
     pushNonFastForward = false
     statusHints = false
-
-#[status]
-#    branch = true
-#    short = true
 
 [core]
     whitespace = trailing-space,space-before-tab

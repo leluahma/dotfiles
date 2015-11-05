@@ -1,67 +1,64 @@
-set nocompatible
-filetype off
+" Check if we are in a restricted mode
+silent! call writefile([], '')
+" In restricted mode, this fails with E145: Shell commands not allowed in rvim
+" In non-restricted mode, this fails with E482: Can't create file <empty>
+let isRestricted = (v:errmsg =~# '^E145:')
 
-if has('win32') || has('win32unix') "windows/cygwin
-    let s:separator = '_'
-    set noshellslash
-else
-    let s:separator = '.'
-endif
+" Vundle support				{{{
+" http://github.com/gmarik/vundle
+" Setup: git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" vim :BundleInstall
 
-let s:parent = '~/' . s:separator . 'vim/'
+if filereadable(expand("~/.vim/bundle/vundle/autoload/vundle.vim"))
+    set nocompatible
+    filetype off
+    
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    " List of bundles {{{
+    " github repositories
+    Bundle 'gmarik/vundle'
+    Bundle "nathanaelkane/vim-indent-guides"
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'tpope/vim-repeat'
+    Bundle 'stephpy/vim-yaml'
+    Bundle 'chase/vim-ansible-yaml'
+    Bundle 'mattn/webapi-vim'
+    Bundle 'mattn/gist-vim'
 
-" Vundle
-let s:bundledir = s:parent . '/bundle/'
-let s:vundledir = s:bundledir . '/vundle/'
-let &rtp .= ',' . s:vundledir
+    Bundle 'kana/vim-surround'
+    Bundle 'markabe/bufexplorer'
+    Bundle 'duff/vim-scratch'
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'mattn/emmet-vim'
+    Bundle 'tomtom/tcomment_vim'
+    Bundle 'pangloss/vim-javascript'
+    Bundle 'Lokaltog/vim-powerline'
 
-call vundle#rc(s:bundledir)
+    Bundle 'altercation/vim-colors-solarized'
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+    " github.com/vim-scripts repositories
+    Bundle "nginx.vim"
 
-" github bundles
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-" Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-repeat'
- 
-" Bundle 'jondistad/vimclojure'
-" Bundle 'edsono/vim-matchit'
-Bundle 'kana/vim-surround'
-" Bundle 'plasticboy/vim-markdown'
- Bundle 'markabe/bufexplorer'
-" Bundle 'cakebaker/scss-syntax.vim'
-" Bundle 'chrismetcalf/vim-yankring'
-" Bundle 'itspriddle/vim-jquery'
-Bundle 'duff/vim-scratch'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'Lokaltog/vim-powerline'
-
-Bundle 'altercation/vim-colors-solarized'
-" Bundle 'Zenburn'
+    " }}}
+endif " }}}
 
 filetype plugin indent on
 
-set modelines=0
+" General options
+set nocompatible
+set modeline
 
 " Tabs & Spaces
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set shiftround
 set expandtab
 set autoindent
 set smarttab
-set shiftround
 set nojoinspaces
-
-set encoding=utf-8
 set scrolloff=3
-set showmode
 set showcmd
 set hidden
 set wildmenu
@@ -70,13 +67,7 @@ set cursorline
 set ttyfast
 set backspace=indent,eol,start
 set laststatus=2
-
-" Visual bell
-set vb t_vb=
-
-" Leader character
-" let mapleader = ","
-
+set directory=.,~/tmp,/var/tmp
 " Searching
 nnoremap / /\v
 vnoremap / /\v
@@ -86,28 +77,43 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
-
-
 " Long line handling
 set wrap
 set ruler
-set textwidth=79
+set textwidth=0
 set formatoptions=qrn1
 
+
+
+
+if isRestricted
+    set showmode
+endif
+
+" Backups
+set nobackup
+set writebackup
+set backupdir=.,./backup~,~/backup~
+
+" Text encoding                     {{{1
+set printencoding=utf-8
+set termencoding=utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=bom,utf-8,iso-8859-2,latin2,cp1250,default,latin1 " }}}1
+
+" Beeping turned off
+set noerrorbells visualbell t_vb=
+
 " Syntax highlighting
-syntax on
-set synmaxcol=120
+if has("syntax")
+    syntax on
+    set synmaxcol=120
+endif
 
 " Diff
 set diffopt+=vertical,iwhite
 
-" Backups
-set backup
-execute 'set backupdir=' . escape(s:parent, ' ') . '/tmp/backup/,.'
-execute 'set directory=' . escape(s:parent, ' ') . '/tmp/swap/,.'
 
 if exists('+relativenumber')
     set relativenumber
@@ -115,19 +121,27 @@ else
     set number
 endif
 
-if has('persistent_undo')
-    set undofile
-    execute 'set undodir=' . escape(s:parent, ' ') . '/tmp/undo/,.'
-endif
-
 " vim 7.3 specific
 if v:version >= 703
     set colorcolumn=85
 endif
 
+if $term == 'xterm'
+    set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+    let g:solarized_termcolors=256
+else
+    set t_Co=16 " Explicitly tell vim that the terminal has 16 colors
+    let g:solarized_termcolors=16
+    let g:solarized_underline=0
+endif
+
 " Color scheme (solarized)
+silent! colorscheme solarized
 set background=dark
-colors solarized
+
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
 
 " Windows
 nnoremap <leader>w <C-w>v<C-w>l
@@ -148,7 +162,16 @@ nnoremap <Space> za
 vnoremap <Space> za
 "noremap <leader>ft Vatzf
 
-nnoremap <leader>p :pu<cr>
+" System clipboard integration {{{1
+" Yank selection to system clipboard
+noremap <Leader>y "*y
+
+" Yank current line to system clipboard
+noremap <Leader>yy "*Y
+
+" Paste text from system clipboard
+noremap <Leader>p :set paste<CR>"*p<Esc>:set nopaste<CR>
+"nnoremap <leader>p :pu<cr>
 
 "
 " Plugins
@@ -159,12 +182,54 @@ nnoremap <leader>p :pu<cr>
 " nnoremap <leader>f :CtrlP<cr>
 " nnoremap <leader>F :CtrlPCurFile<cr>
 
-" set wildignore+=.git\*,.svn\*
 let g:ctrlp_by_filename = 1
+let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v\.(git|hg|svn|target)$',
+	\ 'dir':  '\v[\/]\.?(git|hg|svn|target)$',
     \ 'file': '\v\.(exe|so|dll|class|orig)$',
     \ }
+
+" Don't backup files in temp directories or shm
+if exists('&backupskip')
+    set backupskip+=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+endif
+
+" Don't keep swap files in temp directories or shm
+if has('autocmd')
+    augroup swapskip
+        autocmd!
+        silent! autocmd BufNewFile,BufReadPre
+            \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+            \ setlocal noswapfile
+    augroup END
+endif
+
+" Don't keep undo files in temp directories or shm
+if has('persistent_undo') && has('autocmd')
+    augroup undoskip
+        autocmd!
+        silent! autocmd BufWritePre
+            \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+            \ setlocal noundofile
+    augroup END
+endif
+
+" Don't keep viminfo for files in temp directories or shm
+if has('viminfo')
+    if has('autocmd')
+        augroup viminfoskip
+            autocmd!
+            silent! autocmd BufNewFile,BufReadPre
+                \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+                \ setlocal viminfo=
+        augroup END
+    endif
+endif
+
+" Source a local configuration file if available		{{{1
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif " }}}
 
