@@ -19,13 +19,12 @@
 ;; Tell emacs where is your personal elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-;; load the packaged named xyz.
-(load "Powershell-Mode")
-
 ; IDO
-(ido-everywhere t)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
 
-(load-theme 'solarized-light t)
+(load-theme 'solarized t)
 
 (require 'auto-complete-nxml)
 
@@ -86,6 +85,6 @@
 
 ;;; excutable paths 
 (setq exec-path (append exec-path
-                         '("C:/Program Files (x86)/Git/bin")))
+                         '("C:/Program Files/Git/bin")))
 
 (add-to-list 'evil-emacs-state-modes 'eww-mode)
