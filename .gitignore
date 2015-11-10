@@ -1,5 +1,2 @@
 
-.VimballRecord
-tmp/
-bundle/
-
+*.swp

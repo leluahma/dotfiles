@@ -36,6 +36,7 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
     Plugin 'tomtom/tcomment_vim'
     Plugin 'pangloss/vim-javascript'
     Plugin 'Lokaltog/vim-powerline'
+    Plugin 'editorconfig/editorconfig-vim'
 
     Plugin 'altercation/vim-colors-solarized'
 
@@ -137,20 +138,21 @@ endif
 
 " Color scheme (solarized)
 silent! colorscheme solarized
-set background=dark
-
 if has("gui_running")
-    " Menu languages
+    " English menu language
     set langmenu=none
 
-    " Set gui font as Consolas 10pt
-    set guifont=Consolas:h12
+    if has("gui_gtk")
+        set guifont=Inconsolata\ 12
+    elseif has("gui_win32")
+        set guifont=Consolas:h12
 
-    " Maximize window on startup
-    " au GUIEnter * simalt ~x
-    language English
+        language English
+    endif
 
     set background=light
+else
+    set background=dark
 endif
 
 nnoremap <leader><space> :noh<cr>
@@ -190,13 +192,9 @@ noremap <Leader>p :set paste<CR>"*p<Esc>:set nopaste<CR>
 "
 " Plugins
 "
-" cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 " CtrlP
-" nnoremap <leader>f :CtrlP<cr>
-" nnoremap <leader>F :CtrlPCurFile<cr>
-
 let g:ctrlp_by_filename = 1
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_show_hidden = 0
