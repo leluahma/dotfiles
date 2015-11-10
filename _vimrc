@@ -36,7 +36,7 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
     Plugin 'tomtom/tcomment_vim'
     Plugin 'pangloss/vim-javascript'
     Plugin 'Lokaltog/vim-powerline'
-    Plugin 'editorconfig/editorconfig-vim'
+    " Plugin 'editorconfig/editorconfig-vim'
 
     Plugin 'altercation/vim-colors-solarized'
 
@@ -187,7 +187,6 @@ noremap <Leader>yy "*Y
 
 " Paste text from system clipboard
 noremap <Leader>p :set paste<CR>"*p<Esc>:set nopaste<CR>
-"nnoremap <leader>p :pu<cr>
 
 "
 " Plugins
