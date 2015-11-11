@@ -36,8 +36,8 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
     Plugin 'tomtom/tcomment_vim'
     Plugin 'pangloss/vim-javascript'
     Plugin 'Lokaltog/vim-powerline'
+    Plugin 'PProvost/vim-ps1'
     " Plugin 'editorconfig/editorconfig-vim'
-
     Plugin 'altercation/vim-colors-solarized'
 
     " github.com/vim-scripts repositories
