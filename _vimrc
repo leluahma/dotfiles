@@ -15,6 +15,7 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
     
     set rtp+=~/.vim/bundle/Vundle.vim/
     call vundle#begin()
+
     " List of bundles {{{
     " github repositories
     Plugin 'VundleVim/Vundle.vim'
@@ -142,10 +143,10 @@ if has("gui_running")
     " English menu language
     set langmenu=none
 
-    if has("gui_gtk")
-        set guifont=Inconsolata\ 12
+    if has("gui_gtk2")
+        set guifont=Sourec\ Code\ Pro\ Medium\ 12,Inconsolata\ 12
     elseif has("gui_win32")
-        set guifont=Consolas:h12
+        set guifont=Source\ Code\ Pro\ Medium:h12,Consolas:h12
 
         language English
     endif
