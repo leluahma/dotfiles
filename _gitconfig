@@ -34,11 +34,13 @@
     whitespace = nowarn
 [rerere]
     enabled = true
+[gui]
+    encoding = utf-8
 
 # aliases
 [alias]
-    # status = status -sb
-    s = status -sbu
+    s = status -sb
+    su = !git s -u
 
     cl = clone
 
