@@ -160,6 +160,9 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
+xnoremap <  <gv
+xnoremap >  >gv
+
 " Windows
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>wm <C-w>_<C-w>|

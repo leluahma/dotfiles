@@ -1,0 +1,15 @@
+set incsearch
+set hlsearch
+set smartcase
+
+" loadplugins '\.(js|penta)$'
+set defsearch=duck
+set newtab=all
+set visualbell
+
+" Hints
+set hintchars=asdflkj
+
+source! $HOME/.vimperatorrc.local
+
+" vim: set ft=vimperator:
