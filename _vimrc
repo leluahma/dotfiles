@@ -4,52 +4,40 @@ silent! call writefile([], '')
 " In non-restricted mode, this fails with E482: Can't create file <empty>
 let isRestricted = (v:errmsg =~# '^E145:')
 
-" Vundle support				{{{
-" http://github.com/gmarik/vundle
-" Setup: git clone http://github.com/VundleVim/Vundle.vim ~/.vim/bundle/
-" vim +PluginInstall +qall
+if filereadable(glob('~/vimfiles/autoload/plug.vim'))
+    call plug#begin('~/vimfiles/bundle')
 
-if isdirectory(expand("~/.vim/bundle/Vundle.vim/"))
-    set nocompatible
-    filetype off
-    
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#begin()
-
-    " List of bundles {{{
     " github repositories
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'nathanaelkane/vim-indent-guides'
-    "Plugin 'Raimondi/YAIFA'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tpope/vim-repeat'
-    Plugin 'stephpy/vim-yaml'
-    Plugin 'chase/vim-ansible-yaml'
-    Plugin 'mattn/webapi-vim'
-    Plugin 'mattn/gist-vim'
+    Plug 'tpope/vim-sensible'
+    " Plug 'editorconfig/editorconfig-vim'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'stephpy/vim-yaml'
+    Plug 'chase/vim-ansible-yaml'
+    Plug 'mattn/webapi-vim'
+    Plug 'mattn/gist-vim'
 
-    Plugin 'kana/vim-surround'
-    Plugin 'jlanzarotta/bufexplorer'
-    Plugin 'duff/vim-scratch'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'mattn/emmet-vim'
-    Plugin 'plasticboy/vim-markdown'
-    Plugin 'tomtom/tcomment_vim'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'Lokaltog/vim-powerline'
-    Plugin 'PProvost/vim-ps1'
-    " Plugin 'editorconfig/editorconfig-vim'
-    Plugin 'altercation/vim-colors-solarized'
+    Plug 'kana/vim-surround'
+    Plug 'jlanzarotta/bufexplorer'
+    Plug 'duff/vim-scratch'
+    Plug 'kien/ctrlp.vim'
+    Plug 'mattn/emmet-vim'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'tomtom/tcomment_vim'
+    Plug 'pangloss/vim-javascript'
+    Plug 'Lokaltog/vim-powerline'
+    Plug 'PProvost/vim-ps1'
+    Plug 'scrooloose/nerdtree'
+
+    Plug 'altercation/vim-colors-solarized'
+    " Plug 'Valloric/YouCompleteMe'
 
     " github.com/vim-scripts repositories
-    Plugin 'nginx.vim'
+    Plug 'nginx.vim'
 
-    call vundle#end()
-
-    " }}}
-endif " }}}
-
-filetype plugin indent on
+    call plug#end()
+endif
 
 " General options
 set nocompatible
@@ -61,18 +49,12 @@ set shiftwidth=4
 set softtabstop=4
 set shiftround
 set expandtab
-set autoindent
-set smarttab
 set nojoinspaces
-set scrolloff=3
 set showcmd
 set hidden
-set wildmenu
 set wildmode=list:longest
 set cursorline
 set ttyfast
-set backspace=indent,eol,start
-set laststatus=2
 set directory=.,~/tmp,/var/tmp
 " Searching
 nnoremap / /\v
@@ -80,12 +62,10 @@ vnoremap / /\v
 set ignorecase
 set smartcase
 set gdefault
-set incsearch
 set showmatch
 set hlsearch
 " Long line handling
 set wrap
-set ruler
 set textwidth=0
 set formatoptions=qrn1
 
@@ -123,38 +103,23 @@ else
     set number
 endif
 
-" vim 7.3 specific
+" vim 7.3+
 if v:version >= 703
     set colorcolumn=85
 endif
 
-if $term == 'xterm'
-    set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
+if &t_Co == 16
+    " set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
     let g:solarized_termcolors=256
 else
-    set t_Co=16 " Explicitly tell vim that the terminal has 16 colors
+    " set t_Co=16 " Explicitly tell vim that the terminal has 16 colors
     let g:solarized_termcolors=16
     let g:solarized_underline=0
 endif
 
 " Color scheme (solarized)
 silent! colorscheme solarized
-if has("gui_running")
-    " English menu language
-    set langmenu=none
-
-    if has("gui_gtk2")
-        set guifont=Sourec\ Code\ Pro\ Medium\ 12,Inconsolata\ 12
-    elseif has("gui_win32")
-        set guifont=Source\ Code\ Pro\ Medium:h12,Consolas:h12
-
-        language English
-    endif
-
-    set background=light
-else
-    set background=dark
-endif
+set background=dark
 
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
@@ -178,8 +143,8 @@ nnoremap k gk
 
 " Folding
 set foldlevelstart=0
-nnoremap <Space> za
-vnoremap <Space> za
+" nnoremap <Space> za
+" vnoremap <Space> za
 "noremap <leader>ft Vatzf
 
 " System clipboard integration {{{1
@@ -233,15 +198,13 @@ if has('persistent_undo') && has('autocmd')
 endif
 
 " Don't keep viminfo for files in temp directories or shm
-if has('viminfo')
-    if has('autocmd')
-        augroup viminfoskip
-            autocmd!
-            silent! autocmd BufNewFile,BufReadPre
-                \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
-                \ setlocal viminfo=
-        augroup END
-    endif
+if has('viminfo') && has('autocmd')
+    augroup viminfoskip
+        autocmd!
+        silent! autocmd BufNewFile,BufReadPre
+            \ /tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*
+            \ setlocal viminfo=
+    augroup END
 endif
 
 " Source a local configuration file if available		{{{1
