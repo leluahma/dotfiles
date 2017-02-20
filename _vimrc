@@ -4,8 +4,8 @@ silent! call writefile([], '')
 " In non-restricted mode, this fails with E482: Can't create file <empty>
 let isRestricted = (v:errmsg =~# '^E145:')
 
-if filereadable(glob('~/vimfiles/autoload/plug.vim'))
-    call plug#begin('~/vimfiles/bundle')
+if filereadable(glob('~/.vim/autoload/plug.vim'))
+    call plug#begin('~/.vim/bundle')
 
     " github repositories
     Plug 'tpope/vim-sensible'
