@@ -108,7 +108,11 @@ if v:version >= 703
     set colorcolumn=85
 endif
 
-if &t_Co == 16
+" if &term == "screen"
+"     set t_Co=256
+" endif
+
+if &t_Co == 256
     " set t_Co=256 " Explicitly tell vim that the terminal has 256 colors
     let g:solarized_termcolors=256
 else
@@ -118,8 +122,8 @@ else
 endif
 
 " Color scheme (solarized)
-silent! colorscheme solarized
 set background=dark
+silent! colorscheme solarized
 
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
