@@ -12,6 +12,4 @@ source $VIMRUNTIME/menu.vim
 language English
 language mes English
 
-set background=light
-
 set guioptions+=c

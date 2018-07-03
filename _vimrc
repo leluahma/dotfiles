@@ -4,12 +4,21 @@ silent! call writefile([], '')
 " In non-restricted mode, this fails with E482: Can't create file <empty>
 let isRestricted = (v:errmsg =~# '^E145:')
 
-if filereadable(glob('~/.vim/autoload/plug.vim'))
-    call plug#begin('~/.vim/bundle')
+if has('win32')
+    let confDir = '~/vimfiles'
+else
+    let confDir = '~/.vim'
+endif
+
+let plugDir = confDir . '/autoload/plug.vim'
+let bundleDir = confDir . '/bundle'
+
+if filereadable(glob(plugDir))
+    call plug#begin(bundleDir)
 
     " github repositories
     Plug 'tpope/vim-sensible'
-    " Plug 'editorconfig/editorconfig-vim'
+    Plug 'editorconfig/editorconfig-vim'
     Plug 'nathanaelkane/vim-indent-guides'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
@@ -88,11 +97,7 @@ set fileencodings=bom,utf-8,iso-8859-2,latin2,cp1250,default,latin1 " }}}1
 " Beeping turned off
 set noerrorbells visualbell t_vb=
 
-" Syntax highlighting
-if has("syntax")
-    syntax on
-    set synmaxcol=120
-endif
+set synmaxcol=120
 
 " Diff
 set diffopt+=vertical,iwhite
@@ -215,4 +220,3 @@ endif
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
 endif " }}}
-

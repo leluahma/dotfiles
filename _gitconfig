@@ -71,7 +71,7 @@
 	# diff = !git diff --word-diff
 	d = diff --word-diff
 	dc = !git d --cached
-	
+
 	# reset commands
 	unstage = reset
 	r = reset
@@ -144,15 +144,19 @@
 	dl = !git ll -1
 
 	# pretty ascii graph log format
-	l = log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %C(cyan)[%an]%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=short
+	l = log --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %C(cyan)[%an]%Creset %Cgreen(%ci)%Creset'
+
+	# pretty log with all refs
+	la = !git l --graph --all
 
 	# pretty log with all branches
-	la = !git l --all
+	lb = !git l --graph --branches
 
-	# show just commits currently decorated by branch/tag pointers 
+	# show just commits currently decorated by branch/tag pointers
 	# really useful for high level picture
-	ld = !git l --all --simplify-by-decoration 
+	ld = !git l --all --simplify-by-decoration
 
 	findadded = log --diff-filter=A
 	findremoved = log --diff-filter=D
-
+[credential]
+	helper = manager
