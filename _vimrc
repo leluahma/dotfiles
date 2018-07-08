@@ -177,7 +177,7 @@ let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.?(git|hg|svn|target)$',
+	\ 'dir':  '\v[\/]\.?(git|hg|svn|target|node_modules)$',
     \ 'file': '\v\.(exe|so|dll|class|orig)$',
     \ }
 

@@ -1,7 +1,7 @@
 if has("gui_win32")
-    set guifont=Source\ Code\ Pro\ Medium:h12,Consolas:h12
+    set guifont=Source\ Code\ Pro\ For\ Powerline:h12,Consolas:h12
 elseif has("gui_gtk2")
-    set guifont=Source\ Code\ Pro\ Medium\ 12,Inconsolata\ 12
+    set guifont=Source\ Code\ Pro\ For\ Powerline 12,Inconsolata\ 12
 endif
 
 set langmenu=en_US.utf8
@@ -11,5 +11,7 @@ source $VIMRUNTIME/menu.vim
 
 language English
 language mes English
+
+set background=light
 
 set guioptions+=c
