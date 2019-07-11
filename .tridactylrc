@@ -1,0 +1,8 @@
+" K and J should move between tabs. x should close them.
+bind J tabnext
+bind K tabprev
+
+" Don't run Tridactyl on some web sites because it doesn't work well, or
+" because the web site has its own keybindings.
+autocmd DocStart www.inoreader.com mode ignore
+

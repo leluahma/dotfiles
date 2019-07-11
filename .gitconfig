@@ -1,0 +1,164 @@
+[include]
+  path = ~/.gitconfig.local
+
+[color "status"]
+  header = normal
+  added = green
+  updated = cyan
+  changed = yellow
+  untracked = red
+  nobranch = red
+  branch = normal bold
+
+[advice]
+  pushNonFastForward = false
+  statusHints = false
+
+[core]
+  whitespace = trailing-space,space-before-tab
+
+# push/pull/diff options
+[push]
+  default = simple
+[pull]
+  default = current
+[diff]
+  renames = copies
+  memonicprefix = true
+[merge]
+  stat = true
+  tool = bc
+[branch]
+  autosetupmerge = always
+  autosetuprebase = always
+[apply]
+  whitespace = nowarn
+[rerere]
+  enabled = true
+[gui]
+  encoding = utf-8
+
+# aliases
+[alias]
+  s = status -sb
+  su = !git s -u
+
+  cl = clone
+
+  ci = commit
+  cm = commit -m
+  cma = commit -a -m
+  ca = commit --amend
+  caa = commit -a --amend -C HEAD
+  amend = commit --amend
+  wip = commit -a -m 'WiP'
+
+  filelog = log --patch
+  fl = log --patch
+
+  ai = add --interactive
+  addall = add -A :/
+
+  co = checkout
+  cob = checkout -b
+  br = branch
+  # "!git branch -ra | grep -v done"
+  bra = branch -ra
+
+  # list all aliases
+  aliases = "!git config -l | grep alias | cut -c 7-"
+
+  # diff = !git diff --word-diff
+  d = diff --word-diff
+  dc = !git d --cached
+
+  # reset commands
+  unstage = reset
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+
+  #stash
+  sl = stash list
+  sa = stash apply
+  ss = stash save
+  sp = stash pop
+
+  cp = cherry-pick
+  grep = grep -Ii
+  gr = grep -Ii
+  # grep from root folder
+  # gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+
+  # grep on filename
+  f = "!git ls-files | grep -Ii"
+
+  #rename branch tree to done-
+  # done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+
+  # diff last commit
+  dlc = diff --cached HEAD^
+  dr = "!f() { git diff "$1"^.."$1"; }; f"
+  diffr = "!f() { git diff "$1"^.."$1"; }; f"
+
+  # assume aliases
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  # show assumed files
+  assumed = !git ls-files -v | grep "^[[:lower:]]" | cut -c 3-
+  # unassume all the assumed files
+  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+  assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+  # skip-worktreee aliases
+  skip = update-index --skip-worktree
+  unskip = update-index --no-skip-worktree
+  # show skip-worktree marked files
+  skipped = "!git ls-files -v | grep -i ^s | cut -c 3-"
+
+  lasttag = describe --tags --abbrev=0
+  lt = describe --tags --abbrev=0
+
+  # merges
+  ours = "!f() { git co --ours $@ && git add $@; }; f"
+  theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+  # update remotes
+  up = "!f() { git remote update -p && git merge --ff-only '@{u}'; }; f"
+
+  # list remotes
+  remotes ="!git config -l | grep remote.*url | tail -n +2"
+
+  # list commands
+  le = log --oneline --decorate
+  ls1 = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate
+  ll = !git ls1 --numstat
+  lds = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --date=short --graph
+  ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --date=relative
+  lc = "!f() { git ll "$1"^.."$1"; }; f"
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+
+  # list modified files in last commit
+  dl = !git ll -1
+
+  # pretty ascii graph log format
+  l = log --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %C(cyan)[%an]%Creset %Cgreen(%ci)%Creset'
+
+  # pretty log with all refs
+  la = !git l --graph --all
+
+  # pretty log with all branches
+  lb = !git l --graph --branches
+
+  # show just commits currently decorated by branch/tag pointers
+  # really useful for high level picture
+  ld = !git l --all --simplify-by-decoration
+
+  findadded = log --diff-filter=A
+  findremoved = log --diff-filter=D
+
+# vim: syntax=gitconfig
+# -*- mode: gitconfig -*-
+

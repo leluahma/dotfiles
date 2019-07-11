@@ -1,0 +1,15 @@
+set ignorecase
+set smartcase
+set incsearch
+set gdefault
+set relativenumber
+
+set clipboard+=unnamedplus
+
+" Map leader to comma
+let mapleader=","
+
+" IDE actions
+nnoremap <leader>f :action ReformatCode<CR>
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+
