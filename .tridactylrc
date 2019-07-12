@@ -6,3 +6,11 @@ bind K tabprev
 " because the web site has its own keybindings.
 autocmd DocStart www.inoreader.com mode ignore
 
+" Only hint search results on Google
+bindurl www.google.com f hint -Jc .g a
+bindurl www.google.com F hint -Jtc .g a
+
+" Same with DuckDuckGo
+bindurl duckduckgo.com f hint -Jc .result a
+bindurl duckduckgo.com F hint -Jtc .result a
+
