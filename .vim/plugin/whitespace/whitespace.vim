@@ -12,3 +12,4 @@ endfunction
 augroup whitespace
   autocmd BufWritePre *.rb call whitespace#strip_trailing()
 augroup END
+
