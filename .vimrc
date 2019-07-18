@@ -11,7 +11,10 @@ if loadPlugins
   call plug#begin()
 
   source ~/.vimrc.plug
-  source ~/.vimrc.plug.local
+
+  if filereadable(expand("~/.vimrc.plug.local"))
+    source ~/.vimrc.plug.local
+  endif
 
   call plug#end()
 endif
@@ -70,6 +73,7 @@ nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+nnoremap <space> :
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
@@ -129,3 +133,4 @@ if filereadable(expand("~/.vimrc.local"))
   " noremap! jj <ESC>
   source ~/.vimrc.local
 endif
+
