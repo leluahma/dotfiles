@@ -2,6 +2,10 @@
 bind J tabnext
 bind K tabprev
 
+" bind c and C to open new tab into work container
+bind c fillcmdline tabopen -c work
+bind C current_url tabopen -c work
+
 " Don't run Tridactyl on some web sites because it doesn't work well, or
 " because the web site has its own keybindings.
 autocmd DocStart www.inoreader.com mode ignore
