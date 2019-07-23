@@ -27,6 +27,8 @@ filetype plugin indent on
 set ignorecase                                               " case-insensitive search
 set smartcase                                                " case-sensitive search if any caps
 set incsearch                                                " search as you type
+set hlsearch                                                 " highlight search term
+nnoremap <leader><space> :nohlsearch<cr>
 
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
