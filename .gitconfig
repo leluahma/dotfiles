@@ -162,3 +162,5 @@
 # vim: syntax=gitconfig
 # -*- mode: gitconfig -*-
 
+[credential]
+	helper = manager

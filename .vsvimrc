@@ -40,3 +40,11 @@ nnoremap k gk
 
 nnoremap <space> :
 
+nnoremap gcc :vsc ReSharper.ReSharper_LineComment<cr>
+vnoremap gcc :vsc ReSharper.ReSharper_BlockComment<cr>
+
+nnoremap <leader>f :vsc Edit.FormatDocument<cr>
+vnoremap <leader>f :vsc Edit.FormatDocument<cr>
+
+nnoremap <leader>r :vsc ReSharper.ReSharper_RefactorThis<cr>
+

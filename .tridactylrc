@@ -11,10 +11,17 @@ bind C current_url tabopen -c work
 autocmd DocStart www.inoreader.com mode ignore
 
 " Only hint search results on Google
-bindurl www.google.com f hint -Jc .g a
-bindurl www.google.com F hint -Jtc .g a
+bindurl www.google.com f hint -Jc .g a, a.fl, #pnnext, #pnprev
+bindurl www.google.com F hint -Jtc .g a, a.fl, #pnnext, #pnprev
 
 " Same with DuckDuckGo
 bindurl duckduckgo.com f hint -Jc .result a
 bindurl duckduckgo.com F hint -Jtc .result a
+
+set allowautofocus false
+
+colors dark
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl
 

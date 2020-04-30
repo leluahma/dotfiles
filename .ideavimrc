@@ -10,12 +10,14 @@ set clipboard+=unnamedplus
 let mapleader=","
 
 " built in search looks better
-nnoremap / :action Find<cr>
+nnoremap <leader>/ :action Find<cr>
 " but preserve ideavim search
 
-nnoremap <leader>/ /
 " IDE actions
 nnoremap <leader>f :action ReformatCode<CR>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
 nnoremap <space> :
+
+set ideajoin
+set easymotion
 

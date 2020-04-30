@@ -28,7 +28,6 @@ set ignorecase                                               " case-insensitive 
 set smartcase                                                " case-sensitive search if any caps
 set incsearch                                                " search as you type
 set hlsearch                                                 " highlight search term
-nnoremap <leader><space> :nohlsearch<cr>
 
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
@@ -72,10 +71,11 @@ nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
-nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+nnoremap <leader>w :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 nnoremap <space> :
+nnoremap <leader><space> :nohlsearch<cr>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
