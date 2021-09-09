@@ -1,9 +1,5 @@
-" Plugins here are part of the CORE Maximum Awesome setup
-" Do NOT add plugs to this list, as they might get removed when you upgrade
-" Maximum Awesome.
 " Please create ~/.vimrc.plug.local and add any extra plugs you want there
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'austintaylor/vim-indentobject'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'juvenn/mustache.vim'
@@ -40,3 +36,4 @@ Plug 'andymass/vim-matchup'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/Align'
 Plug 'vim-scripts/greplace.vim'
+
