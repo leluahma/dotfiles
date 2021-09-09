@@ -62,7 +62,6 @@
   co = checkout
   cob = checkout -b
   br = branch
-  # "!git branch -ra | grep -v done"
   bra = branch -ra
 
   # list all aliases
@@ -145,6 +144,7 @@
 
   # pretty ascii graph log format
   l = log --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %C(cyan)[%an]%Creset %Cgreen(%ci)%Creset'
+  lg = !git l --graph
 
   # pretty log with all refs
   la = !git l --graph --all
@@ -161,4 +161,3 @@
 
 # vim: syntax=gitconfig
 # -*- mode: gitconfig -*-
-
