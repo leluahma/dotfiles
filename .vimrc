@@ -29,6 +29,12 @@ set smartcase                                                " case-sensitive se
 set incsearch                                                " search as you type
 set hlsearch                                                 " highlight search term
 
+" Visual bell
+set noerrorbells
+set visualbell
+set t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
@@ -76,6 +82,7 @@ nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 nnoremap <space> :
 nnoremap <leader><space> :nohlsearch<cr>
+nnoremap / /\v
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
