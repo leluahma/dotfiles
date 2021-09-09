@@ -2,6 +2,9 @@
 bind J tabnext
 bind K tabprev
 
+bind j scrollline 3
+bind k scrollline -3
+
 " bind c and C to open new tab into work container
 bind c fillcmdline tabopen -c work
 bind C current_url tabopen -c work
