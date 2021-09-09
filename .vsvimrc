@@ -1,3 +1,7 @@
+set ignorecase
+set smartcase
+set incsearch
+
 " Tabs & Spaces
 set tabstop=4
 set shiftwidth=4
@@ -21,9 +25,6 @@ let mapleader=","
 " Searching
 nnoremap / /\v
 vnoremap / /\v
-set ignorecase
-set smartcase
-set incsearch
 
 " Windows
 nnoremap <leader>w <C-w>v<C-w>l
@@ -40,8 +41,8 @@ nnoremap k gk
 
 nnoremap <space> :
 
-nnoremap gcc :vsc ReSharper.ReSharper_LineComment<cr>
-vnoremap gcc :vsc ReSharper.ReSharper_BlockComment<cr>
+nnoremap <leader>c :vsc ReSharper.ReSharper_LineComment<cr>
+vnoremap <leader>c :vsc ReSharper.ReSharper_BlockComment<cr>
 
 nnoremap <leader>f :vsc Edit.FormatDocument<cr>
 vnoremap <leader>f :vsc Edit.FormatDocument<cr>

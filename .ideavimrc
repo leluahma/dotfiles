@@ -1,23 +1,40 @@
 set ignorecase
 set smartcase
 set incsearch
+
 set gdefault
 set relativenumber
 
 set clipboard+=unnamedplus
 
-" Map leader to comma
 let mapleader=","
 
+set ideajoin
+set easymotion
+set surround
+
+nnoremap <space> :
+
+" Window navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
 " built in search looks better
+nnoremap / /\v
+vnoremap / /\v
+
 nnoremap <leader>/ :action Find<cr>
 " but preserve ideavim search
 
 " IDE actions
 nnoremap <leader>f :action ReformatCode<CR>
-nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
-nnoremap <space> :
+vnoremap <leader>f :action ReformatCode<CR>
 
-set ideajoin
-set easymotion
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+vnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+
+nnoremap <leader>c :action CommentByLineComment<CR>
+vnoremap <leader>c :action CommentByBlockComment<CR>
 
