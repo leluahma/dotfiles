@@ -1,6 +1,3 @@
-[include]
-  path = ~/.gitconfig.local
-
 [color "status"]
   header = normal
   added = green
@@ -16,23 +13,22 @@
 
 [core]
   whitespace = trailing-space,space-before-tab
+	commentchar = $
 
 # push/pull/diff options
 [push]
   default = simple
 [pull]
-  default = current
+  rebase = true
 [diff]
   renames = copies
   memonicprefix = true
+  colormoved = zebra
 [merge]
-  stat = true
-  tool = bc
+  conflictstyle = diff3
 [branch]
   autosetupmerge = always
   autosetuprebase = always
-[apply]
-  whitespace = nowarn
 [rerere]
   enabled = true
 [gui]
@@ -149,7 +145,7 @@
   # pretty log with all refs
   la = !git l --graph --all
 
-  # pretty log with all branches
+  # pretty log with all local branches
   lb = !git l --graph --branches
 
   # show just commits currently decorated by branch/tag pointers
@@ -158,6 +154,9 @@
 
   findadded = log --diff-filter=A
   findremoved = log --diff-filter=D
+
+[include]
+  path = ~/.gitconfig.local
 
 # vim: syntax=gitconfig
 # -*- mode: gitconfig -*-
