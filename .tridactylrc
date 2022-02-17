@@ -6,8 +6,8 @@ bind j scrollline 3
 bind k scrollline -3
 
 " bind c and C to open new tab into work container
-bind c fillcmdline tabopen -c work
-bind C current_url tabopen -c work
+bind c fillcmdline tabopen -c monad
+bind C current_url tabopen -c monad
 
 " Don't run Tridactyl on some web sites because it doesn't work well, or
 " because the web site has its own keybindings.
@@ -22,6 +22,7 @@ bindurl duckduckgo.com f hint -Jc .result a
 bindurl duckduckgo.com F hint -Jtc .result a
 
 set allowautofocus false
+set tabopenpos last
 
 colors dark
 
